@@ -60,7 +60,7 @@ function current_activities {
         for module in $modules; do
             project_name_and_end=$(echo "$activities" | jq -r --arg mod "$module" '.[$mod].project[] | .name, .date_end')
             printf "\033[1:33m$module:\033[0m\n"
-            printf "\033[0;33m$project_name_and_end\033[0m\n"`
+            printf "\033[0;33m$project_name_and_end\033[0m\n"
             echo
         done
 
