@@ -47,10 +47,11 @@ function userinfo {
 function current_activities {
     if [ -f ".cookies" ]; then
         login=$(userinfo | cut -d '"' -f 2)
-        printf "Logged in: $login\n"
         activities=$(curl --silent -X GET https://modules-api.etna-alternance.net/students/$login/currentactivities -L -b .cookies)
 
         clear
+        printf "Logged in: \033[4:30m$login\033[0m\n\n"
+
         if [[ -z $activities ]]; then
             echo "Failed to fetch activities"
             exit 1
