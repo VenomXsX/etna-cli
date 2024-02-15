@@ -30,4 +30,5 @@ Example: if you've cloned this repo in your home directory, it would look like:
 - `source ~/.bashrc`
 
 
-### 4. 
+### 4. Test the CLI
+- `etna help`
