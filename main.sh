@@ -1,10 +1,11 @@
 #!bin/bash
-source ./lib/login.sh
+source ./lib/functions.sh
 
 case $1 in
 login) login ;;
 userinfo) userinfo ;;
-current_activities) current_activities ;;
+activs) current_activities ;;
 flush) flush ;;
-*) echo "bro learn the usage -h" ;;
+help) help ;;
+*) echo "use etna help for usage" ;;
 esac
