@@ -1,6 +1,8 @@
 # ETNA CLI
 
-I wanted to see informations from my school's intranet right on the terminal
+I wanted to see informations from my school's intranet right on the terminal.
+
+Currently making the auto setup script, for now see [manual setup](#manual-set-up-to-path)
 
 Tools needed
 
@@ -29,6 +31,6 @@ Example: if you've cloned this repo in your home directory, it would look like:
 
 - `source ~/.bashrc`
 
-
 ### 4. Test the CLI
+
 - `etna help`
