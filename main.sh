@@ -7,5 +7,8 @@ userinfo) userinfo ;;
 activs) current_activities ;;
 flush) flush ;;
 help) help ;;
-*) echo "use etna help for usage" ;;
+*)
+    echo "use 'etna help' for usage"
+    help
+    ;;
 esac

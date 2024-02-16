@@ -1,11 +1,12 @@
 function help {
     echo
+    printf "Usage: etna <command>\n"
     printf "Commands list:\n"
     echo
-    printf "login: to retrieve the session cookie necessary for other commands\n"
-    printf "userinfo: get logged in user informations\n"
-    printf "activs: get current activities informations (on-going modules, etc.)\n"
-    printf "flush: removes the cookie from your login\n"
+    printf "\033[0;32mlogin\033[0m:      to retrieve the session cookie necessary for other commands\n"
+    printf "\033[0;32muserinfo\033[0m:   get logged in user informations\n"
+    printf "\033[0;32mactivs\033[0m:     get current activities informations (on-going modules, etc.)\n"
+    printf "\033[0;32mflush\033[0m:      removes the cookie from your login\n"
     echo
 }
 
@@ -28,11 +29,13 @@ function checkcookies {
 function flush {
     if [ -f ".cookies" ]; then
         rm ".cookies"
+        printf "Deleted the cookie\n"
+        exit 0
     fi
+    printf "No cookie found\n"
 }
 
 function login {
-    clear
     if [ -f ".cookies" ]; then
         rm ".cookies"
     fi
@@ -52,7 +55,6 @@ function login {
 }
 
 function userinfo {
-    clear
     checkcookies
 
     identity=$(curl --silent -X GET https://auth.etna-alternance.net/identity -L -b .cookies)
@@ -67,7 +69,6 @@ function current_activities {
     login=$(userinfo | cut -d '"' -f 2)
     activities=$(curl --silent -X GET https://modules-api.etna-alternance.net/students/$login/currentactivities -L -b .cookies)
 
-    clear
     printf "Logged in: \033[4:30m$login\033[0m\n"
     printf "Current date \033[0;32m$(date +"%Y-%m-%d %H:%M:%S")\033[0m\n\n"
 
