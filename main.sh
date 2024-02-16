@@ -5,6 +5,7 @@ source $ETNA_CLI/lib/help.sh
 source $ETNA_CLI/lib/login.sh
 source $ETNA_CLI/lib/userinfo.sh
 source $ETNA_CLI/lib/planning.sh
+source $ETNA_CLI/lib/notifications.sh
 
 case $1 in
 login) login ;;
@@ -12,6 +13,7 @@ userinfo) userinfo ;;
 activs) current_activities ;;
 flush) flush ;;
 planning) planning ;;
+notifs) notifications ;;
 help) help ;;
 *)
     echo "use 'etna help' for usage"
