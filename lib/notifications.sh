@@ -8,7 +8,7 @@ function notifications {
     notifs=$(curl --silent -X GET https://prepintra-api.etna-alternance.net/students/$login/informations -L -b /tmp/.etna-cookies)
     printf "Unread notifications:\n"
 
-    if [[ -n $planning && $(echo "$planning" | jq length) -gt 0 ]]; then
+    if [[ -n $notifs && $(echo "$notifs" | jq length) -gt 0 ]]; then
         printf "\n$notifs\n"
     else
         printf "\n\033[0;32m0 unread notifications\033[0m\n"
