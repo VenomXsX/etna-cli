@@ -13,6 +13,18 @@ function nocookies {
     printf "\nNo cookies found, run \033[4;30metna login\033[0m first\n\n"
 }
 
+function checkcookies {
+    if [ ! -f ".cookies" ]; then
+        nocookies
+        exit 1
+    fi
+    identity=$(curl --silent -X GET https://auth.etna-alternance.net/identity -L -b .cookies)
+    if [[ $identity = 'Missing cookie' ]]; then
+        printf "\nCookie expired, relogin first: \033[4metna login\033[0m\n\n"
+        exit 1
+    fi
+}
+
 function flush {
     if [ -f ".cookies" ]; then
         rm ".cookies"
@@ -41,10 +53,7 @@ function login {
 
 function userinfo {
     clear
-    if [ ! -f ".cookies" ]; then
-        nocookies
-        exit 1
-    fi
+    checkcookies
 
     identity=$(curl --silent -X GET https://auth.etna-alternance.net/identity -L -b .cookies)
     printf "Logged in: "
@@ -53,15 +62,12 @@ function userinfo {
 }
 
 function current_activities {
-    if [ ! -f ".cookies" ]; then
-        nocookies
-        exit 1
-    fi
+    checkcookies
 
     login=$(userinfo | cut -d '"' -f 2)
-    activities=$(curl --silent -X GET https://modules-api.etna-alternance.net/students/$login/currentactivities -L -b .cookies)
+    activities=$(curl -X GET https://modules-api.etna-alternance.net/students/$login/currentactivities -L -b .cookies)
 
-    clear
+    # clear
     printf "Logged in: \033[4:30m$login\033[0m\n\n"
 
     if [[ -z $activities ]]; then
