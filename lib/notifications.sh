@@ -8,7 +8,8 @@ function notifications {
     notifs=$(curl --silent -X GET https://prepintra-api.etna-alternance.net/students/$login/informations -L -b /tmp/.etna-cookies)
     printf "Unread notifications:\n"
 
-    # TODO: DEBUG: notifs=$(cat ./test.json)
+    # TODO: DEBUG
+    # notifs=$(cat ./test.json)
 
     if [[ -n $notifs && $(echo "$notifs" | jq length) -gt 0 ]]; then
         nb=$(echo "$notifs" | jq length)
@@ -19,15 +20,15 @@ function notifications {
             printf "$message\n"
             type=$(echo $item | jq -r ".metas.type")
             if [[ $type = "event_subscription" ]]; then
-                printf "\033[0;30m==> https://intra.etna-alternance.net/#/user/$login/planning\033[0m\n\n"
+                printf "\033[0;36m==> https://intra.etna-alternance.net/#/user/$login/planning\033[0m\n\n"
             elif [[ $type = "module_show" ]]; then
                 session_id=$(echo $item | jq -r ".metas.session_id")
-                printf "\033[0;30m==> https://intra.etna-alternance.net/#/user/$login/elearning/$session_id\033[0m\n\n"
+                printf "\033[0;36m==> https://intra.etna-alternance.net/#/user/$login/elearning/$session_id\033[0m\n\n"
             elif [[ $type = "activity_show" ]]; then
                 session_id=$(echo $item | jq -r ".metas.session_id")
                 activity_id=$(echo $item | jq -r ".metas.activity_id")
                 activity_type=$(echo $item | jq -r ".metas.activity_type")
-                printf "\033[0;30m==> https://intra.etna-alternance.net/#/sessions/$session_id/$activity_type/$activity_id\033[0m\n\n"
+                printf "\033[0;36m==> https://intra.etna-alternance.net/#/sessions/$session_id/$activity_type/$activity_id\033[0m\n\n"
             else
                 printf "\n"
             fi
