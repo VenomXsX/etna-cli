@@ -8,6 +8,6 @@ function help {
     printf "\033[0;32mactivs\033[0m         get current activities informations (on-going modules, etc.)\n"
     printf "\033[0;32mflush\033[0m          removes the cookie from your login\n"
     printf "\033[0;32mplanning\033[0m       get events on your planning from now to the next month\n"
-    printf "\033[0;32mnotifs\033[0m       display your unread notifications\n"
+    printf "\033[0;32mnotifs\033[0m         display your unread notifications\n"
     echo
 }
