@@ -10,7 +10,7 @@ function notifications {
 
     if [[ -n $notifs && $(echo "$notifs" | jq length) -gt 0 ]]; then
         nb=$(echo "$notifs" | jq length)
-        printf "\n\033[0;35m$nb unread notifications\033[0m\n"
+        printf "\n\033[0;35m$nb unread notifications \033[0;30mhttps://intra.etna-alternance.net/\033[0m\n"
 
         echo "$notifs" | jq -c '.[]' | while IFS= read -r item; do
             message=$(echo $item | jq -r ".message")
