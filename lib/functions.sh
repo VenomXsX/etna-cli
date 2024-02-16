@@ -57,7 +57,7 @@ function userinfo {
 
     identity=$(curl --silent -X GET https://auth.etna-alternance.net/identity -L -b .cookies)
     printf "Logged in: "
-    echo $identity | jq -r ".login"
+    echo $identity | jq ".login"
     exit 0
 }
 
@@ -65,9 +65,9 @@ function current_activities {
     checkcookies
 
     login=$(userinfo | cut -d '"' -f 2)
-    activities=$(curl -X GET https://modules-api.etna-alternance.net/students/$login/currentactivities -L -b .cookies)
+    activities=$(curl --silent -X GET https://modules-api.etna-alternance.net/students/$login/currentactivities -L -b .cookies)
 
-    # clear
+    clear
     printf "Logged in: \033[4:30m$login\033[0m\n\n"
 
     if [[ -z $activities ]]; then
