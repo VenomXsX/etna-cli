@@ -58,15 +58,27 @@ function userinfo {
     checkcookies
 
     identity=$(curl --silent -X GET https://auth.etna-alternance.net/identity -L -b .cookies)
-    printf "Logged in: "
-    echo $identity | jq ".login"
+    id=$(echo $identity | jq -r ".id")
+    informations=$(curl --silent -X GET https://auth.etna-alternance.net/api/users/$id -L -b .cookies)
+
+    firstname=$(echo $informations | jq -r ".firstname")
+    lastname=$(echo $informations | jq -r ".lastname")
+    email=$(echo $informations | jq -r ".email")
+    login=$(echo $informations | jq -r ".login")
+
+    echo
+    printf "Name :      $firstname $lastname\n"
+    printf "Login:      $login\n"
+    printf "Email:      $email\n\n"
+
     exit 0
 }
 
 function current_activities {
     checkcookies
 
-    login=$(userinfo | cut -d '"' -f 2)
+    identity=$(curl --silent -X GET https://auth.etna-alternance.net/identity -L -b .cookies)
+    login=$(echo $identity | jq -r ".login")
     activities=$(curl --silent -X GET https://modules-api.etna-alternance.net/students/$login/currentactivities -L -b .cookies)
 
     printf "Logged in: \033[4:30m$login\033[0m\n"
