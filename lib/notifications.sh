@@ -15,6 +15,15 @@ function notifications {
         echo "$notifs" | jq -c '.[]' | while IFS= read -r item; do
             message=$(echo $item | jq -r ".message")
             printf "$message\n"
+            type=$(echo $item | jq -r ".metas.type")
+            if [[ $type = "event_subscription" ]]; then
+                printf "This is an event subscription\n\n"
+            elif [[ $type = "module_show" ]]; then
+                printf "This is a module_show\n\n"
+            elif [[ $type = "activity_show" ]]; then
+                printf "This is a activity_show\n\n"
+            fi
+
         done
     else
         printf "\n\033[0;32m0 unread notifications\033[0m\n"
