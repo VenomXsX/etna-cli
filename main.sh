@@ -10,12 +10,24 @@ source $ETNA_CLI/lib/marks.sh
 
 case $1 in
 login) login ;;
+
 userinfo) userinfo ;;
+user) userinfo ;;
+
 activs) current_activities ;;
+activities) current_activities ;;
+
 flush) flush ;;
+
 planning) planning ;;
+plan) planning ;;
+
 notifs) notifications ;;
+notifications) notifications ;;
+
 marks) marks ;;
+notes) marks ;;
+
 help) help ;;
 *)
     echo "use 'etna help' for usage"
