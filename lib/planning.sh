@@ -5,10 +5,10 @@ function planning {
 
     identity=$(curl --silent -X GET https://auth.etna-alternance.net/identity -L -b /tmp/.etna-cookies)
     login=$(echo $identity | jq -r ".login")
-    start_date=$(date +%Y-%m-%d)
+    today=$(date +%Y-%m-%d)
     end_date=$(date -d "+1 month" +%Y-%m-%d)
     planning=$(
-        curl --silent -X GET https://prepintra-api.etna-alternance.net/students/$login/events?end=$end_date\&start=$start_date -L -b /tmp/.etna-cookies
+        curl --silent -X GET https://prepintra-api.etna-alternance.net/students/$login/events?end=$end_date\&start=$today -L -b /tmp/.etna-cookies
     )
     printf "Events in your planning from now to $end_date (next month)\n\n"
     if [[ -n $planning && $(echo "$planning" | jq length) -gt 0 ]]; then
@@ -18,7 +18,13 @@ function planning {
             # Extract name and date from each item
             name=$(echo "$item" | jq -r '.activity_name')
             start=$(echo "$item" | jq -r '.start')
-            printf "$start \033[0;33m$name\033[0m\n"
+
+            #TODO: Working on displaying remaining days
+
+            # difference_seconds=$($(date -d '$given_date' +%s) - $(date -d '$current_date' +%s))
+            # remaining_days=$($difference_seconds / (60 * 60 * 24))
+
+            printf "$start \033[0;33m$name\033[0m (in $remaining_days)\n"
 
             # Iterate over the 'members' array in each item
             printf "Member(s):\n"
