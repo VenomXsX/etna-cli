@@ -19,12 +19,16 @@ function planning {
             name=$(echo "$item" | jq -r '.activity_name')
             start=$(echo "$item" | jq -r '.start')
 
+            type=$(echo "$item" | jq -r '.type')
+
             #TODO: Working on displaying remaining days
 
-            # difference_seconds=$($(date -d '$given_date' +%s) - $(date -d '$current_date' +%s))
-            # remaining_days=$($difference_seconds / (60 * 60 * 24))
 
-            printf "$start \033[0;33m$name\033[0m (in $remaining_days)\n"
+            start_sec=$(date -d "$start" +%s)
+            today_sec=$(date -d "$today" +%s)
+            remaining_days=$(( ($start_sec - $today_sec) / 86400 ))
+
+            printf "\033[0;36m$start\033[0m | \033[0;33m$name\033[0m | \033[0;35m$type\033[0m (in $remaining_days days)\n"
 
             # Iterate over the 'members' array in each item
             printf "Member(s):\n"
