@@ -3,9 +3,9 @@ source $ETNA_CLI/lib/utils/checkcookies.sh
 function notifications {
     checkcookies
 
-    identity=$(curl --silent -X GET https://auth.etna-alternance.net/identity -L -b /tmp/.etna-cookies)
+    identity=$(curl --silent -X GET https://auth.etna-alternance.net/identity -L -b $cookie_path)
     login=$(echo $identity | jq -r ".login")
-    notifs=$(curl --silent -X GET https://prepintra-api.etna-alternance.net/students/$login/informations -L -b /tmp/.etna-cookies)
+    notifs=$(curl --silent -X GET https://prepintra-api.etna-alternance.net/students/$login/informations -L -b $cookie_path)
     printf "Unread notifications:\n"
 
     # TODO: DEBUG

@@ -3,13 +3,13 @@ source $ETNA_CLI/lib/utils/checkcookies.sh
 function marks {
     checkcookies
 
-    identity=$(curl --silent -X GET https://auth.etna-alternance.net/identity -L -b /tmp/.etna-cookies)
-    promo=$(curl --silent -X GET https://prepintra-api.etna-alternance.net/promo -L -b /tmp/.etna-cookies)
+    identity=$(curl --silent -X GET https://auth.etna-alternance.net/identity -L -b $cookie_path)
+    promo=$(curl --silent -X GET https://prepintra-api.etna-alternance.net/promo -L -b $cookie_path)
     login=$(echo $identity | jq -r ".login")
 
     # select the first objects
     promo_id=$(echo $promo | jq -r "[.[] | select (.id)][0] | .id")
-    grades=$(curl --silent -X GET https://prepintra-api.etna-alternance.net/terms/$promo_id/students/$login/marks -L -b /tmp/.etna-cookies)
+    grades=$(curl --silent -X GET https://prepintra-api.etna-alternance.net/terms/$promo_id/students/$login/marks -L -b $cookie_path)
     printf "\nMarks for: $login\n"
 
     if [[ -n $grades && $(echo "$grades" | jq length) -gt 0 ]]; then

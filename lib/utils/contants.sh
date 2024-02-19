@@ -1,0 +1,1 @@
+cookie_path="$HOME/etna-cli-tmp/.cookies"

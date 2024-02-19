@@ -1,6 +1,6 @@
 function flush {
-    if [ -f "/tmp/.etna-cookies" ]; then
-        rm "/tmp/.etna-cookies"
+    if [ -f "$cookie_path" ]; then
+        rm "$cookie_path"
         printf "Deleted the cookie\n"
         exit 0
     fi

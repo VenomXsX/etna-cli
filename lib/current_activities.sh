@@ -3,9 +3,9 @@ source $ETNA_CLI/lib/utils/checkcookies.sh
 function current_activities {
     checkcookies
 
-    identity=$(curl --silent -X GET https://auth.etna-alternance.net/identity -L -b /tmp/.etna-cookies)
+    identity=$(curl --silent -X GET https://auth.etna-alternance.net/identity -L -b $cookie_path)
     login=$(echo $identity | jq -r ".login")
-    activities=$(curl --silent -X GET https://modules-api.etna-alternance.net/students/$login/currentactivities -L -b /tmp/.etna-cookies)
+    activities=$(curl --silent -X GET https://modules-api.etna-alternance.net/students/$login/currentactivities -L -b $cookie_path)
 
     printf "Logged in: \033[4:30m$login\033[0m\n"
     printf "Current date \033[0;32m$(date +"%Y-%m-%d %H:%M:%S")\033[0m\n\n"
