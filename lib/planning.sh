@@ -23,12 +23,18 @@ function planning {
 
             #TODO: Working on displaying remaining days
 
-
             start_sec=$(date -d "$start" +%s)
             today_sec=$(date -d "$today" +%s)
-            remaining_days=$(( ($start_sec - $today_sec) / 86400 ))
+            remaining_days=$((($start_sec - $today_sec) / 86400))
 
-            printf "\033[0;36m$start\033[0m | \033[0;33m$name\033[0m | \033[0;35m$type\033[0m (in $remaining_days days)\n"
+            printf "\033[0;36m$start\033[0m | \033[0;33m$name\033[0m | \033[0;35m$type\033[0m "
+            if [[ $remaining_days -eq 0 ]]; then
+                printf "(today)\n"
+            elif [[ $remaining_days -eq 1 ]]; then
+                printf "(tomorrow)\n"
+            else
+                printf "(in $remaining_days days)\n"
+            fi
 
             # Iterate over the 'members' array in each item
             printf "Member(s):\n"
