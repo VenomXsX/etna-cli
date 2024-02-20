@@ -8,6 +8,7 @@ source $ETNA_CLI/lib/planning.sh
 source $ETNA_CLI/lib/notifications.sh
 source $ETNA_CLI/lib/marks.sh
 source $ETNA_CLI/lib/today.sh
+source $ETNA_CLI/lib/tickets.sh
 
 case $1 in
 login) login ;;
@@ -31,6 +32,9 @@ notes) marks ;;
 
 today) today ;;
 td) today ;;
+
+tickets) tickets ;;
+tk) tickets ;;
 
 help) help ;;
 *)
