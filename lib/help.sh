@@ -10,5 +10,6 @@ function help {
     printf "\033[0;32mplanning\033[0m       get events on your planning from now to the next month\n"
     printf "\033[0;32mnotifs\033[0m         display your unread notifications\n"
     printf "\033[0;32mmarks|notes\033[0m    display all your marks and average mark\n"
+    printf "\033[0;32mtoday|td\033[0m       display the planning and your notifications\n"
     echo
 }

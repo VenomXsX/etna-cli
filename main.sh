@@ -7,6 +7,7 @@ source $ETNA_CLI/lib/userinfo.sh
 source $ETNA_CLI/lib/planning.sh
 source $ETNA_CLI/lib/notifications.sh
 source $ETNA_CLI/lib/marks.sh
+source $ETNA_CLI/lib/today.sh
 
 case $1 in
 login) login ;;
@@ -27,6 +28,8 @@ notifications) notifications ;;
 
 marks) marks ;;
 notes) marks ;;
+
+today) today ;;
 
 help) help ;;
 *)
