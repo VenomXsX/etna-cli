@@ -28,7 +28,7 @@ Example: if you've cloned this repo in your home directory, it would look like:
 - `export PATH=$ETNA_CLI:$PATH`
 - `alias etna='bash main.sh'`
 
-### 3. Load your the changes
+### 3. Load the changes
 
 - `source ~/.bashrc`
 
