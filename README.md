@@ -7,7 +7,8 @@ Currently making the auto setup script, for now see [manual setup](#manual-set-u
 Tools needed
 
 - curl
-- jq
+- jq 
+- bc 
 
 Install those with your package manager
 
