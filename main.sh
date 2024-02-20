@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 source $ETNA_CLI/lib/current_activities.sh
 source $ETNA_CLI/lib/utils/flush.sh
 source $ETNA_CLI/lib/help.sh
