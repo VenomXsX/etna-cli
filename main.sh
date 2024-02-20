@@ -30,6 +30,7 @@ marks) marks ;;
 notes) marks ;;
 
 today) today ;;
+td) today ;;
 
 help) help ;;
 *)
