@@ -18,15 +18,15 @@ Install those with your package manager
 
 - `chmod +x main.sh`
 
-### 2. Add these lines to your `~/.bashrc`
+### 2. Add these 3 lines to your `~/.bashrc`
 
-- `export ETNA_CLI="$HOME/<path_to_this_repo>"`
+- 1. `export ETNA_CLI="$HOME/<path_to_this_repo>"`
 
 Example: if you've cloned this repo in your home directory, it would look like:
 `export ETNA_CLI="$HOME/etna-cli"`
 
-- `export PATH=$ETNA_CLI:$PATH`
-- `alias etna='bash main.sh'`
+- 2. `export PATH=$ETNA_CLI:$PATH`
+- 3. `alias etna='bash main.sh'`
 
 ### 3. Load the changes
 
@@ -35,3 +35,10 @@ Example: if you've cloned this repo in your home directory, it would look like:
 ### 4. Test the CLI
 
 - `etna help`
+
+
+
+## Roadmap
+
+- Visualize activity subject
+- Take 'soutenances' directly from the CLI
