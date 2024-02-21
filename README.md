@@ -7,8 +7,8 @@ Currently making the auto setup script, for now see [manual setup](#manual-set-u
 Tools needed
 
 - curl
-- jq 
-- bc 
+- jq
+- bc
 
 Install those with your package manager
 
@@ -20,9 +20,9 @@ Install those with your package manager
 
 ### 2. Add these 3 lines to your `~/.bashrc`
 
-- 1. `export ETNA_CLI="$HOME/<path_to_this_repo>"`
-- 2. `export PATH=$ETNA_CLI:$PATH`
-- 3. `alias etna='bash main.sh'`
+1.  `export ETNA_CLI="$HOME/<path_to_this_repo>"`
+2.  `export PATH=$ETNA_CLI:$PATH`
+3.  `alias etna='bash main.sh'`
 
 ### 3. Load the changes
 
@@ -31,8 +31,6 @@ Install those with your package manager
 ### 4. Test the CLI
 
 - `etna help`
-
-
 
 ## Roadmap
 
