@@ -21,10 +21,6 @@ Install those with your package manager
 ### 2. Add these 3 lines to your `~/.bashrc`
 
 - 1. `export ETNA_CLI="$HOME/<path_to_this_repo>"`
-
-Example: if you've cloned this repo in your home directory, it would look like:
-`export ETNA_CLI="$HOME/etna-cli"`
-
 - 2. `export PATH=$ETNA_CLI:$PATH`
 - 3. `alias etna='bash main.sh'`
 
