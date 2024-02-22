@@ -6,7 +6,6 @@ function tickets {
     res=$(curl --silent -X GET https://tickets.etna-alternance.net/api/tasks.json -L -b $cookie_path)
 
     tickets_array=$(echo $res | jq -r ".data")
-
     if [[ -n $tickets_array && $(echo "$tickets_array" | jq length) -gt 0 ]]; then
         # Loops over each object in array and call it 'item'
         echo "$tickets_array" | jq -c '.[]' | while IFS= read -r item; do
@@ -23,12 +22,9 @@ function tickets {
             else
                 printf "$status"
             fi
-
             printf " \033[0;33m$title\033[0m (created by $creator_login)\n"
-
         done
     else
         printf "\033[0;33mNothing\033[0m\n"
     fi
-
 }

@@ -47,5 +47,4 @@ function marks {
     else
         printf "\n\033[0;32mNo marks found\033[0m\n"
     fi
-    # echo $grades
 }

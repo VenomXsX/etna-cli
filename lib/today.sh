@@ -8,5 +8,4 @@ function today {
     planning
     echo "=================="
     notifications
-
 }
