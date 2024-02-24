@@ -31,7 +31,6 @@ function notifications {
             else
                 printf "\n"
             fi
-
         done
     else
         printf "\n\033[0;32m0 unread notifications\033[0m\n"

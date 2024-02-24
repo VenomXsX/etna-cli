@@ -30,7 +30,6 @@ function current_activities {
                 name=$(echo "$item" | jq -r '.name')
                 date_end=$(echo "$item" | jq -r '.date_end')
                 printf "$date_end \033[0;33m$name\033[0m\n"
-
             done
         else
             printf "\033[0;33mNothing\033[0m\n"

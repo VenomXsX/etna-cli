@@ -43,7 +43,6 @@ function marks {
             average=$(echo "scale=2; $grade_sum / ${#grades_list[@]}" | bc)
             printf "\n\033[1mAverage: \033[1;33m$average\033[0m pts\n\n"
         fi
-
     else
         printf "\n\033[0;32mNo marks found\033[0m\n"
     fi
