@@ -7,9 +7,6 @@ function notifications {
     login=$(echo $identity | jq -r ".login")
     notifs=$(curl --silent -X GET https://prepintra-api.etna-alternance.net/students/$login/informations -L -b $cookie_path)
 
-    # TODO: DEBUG
-    # notifs=$(cat ./test.json)
-
     if [[ -n $notifs && $(echo "$notifs" | jq length) -gt 0 ]]; then
         nb=$(echo "$notifs" | jq length)
         printf "\033[0;31m$nb unread notification(s) \033[0;30mhttps://intra.etna-alternance.net/\033[0m\n\n"
