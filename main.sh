@@ -20,6 +20,7 @@ activs) current_activities ;;
 activities) current_activities ;;
 
 flush) flush ;;
+logout) flush ;;
 
 planning) planning ;;
 plan) planning ;;
