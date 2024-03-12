@@ -9,7 +9,6 @@ function tickets {
     if [[ -n $tickets_array && $(echo "$tickets_array" | jq length) -gt 0 ]]; then
         # Loops over each object in array and call it 'item'
         echo "$tickets_array" | jq -c '.[]' | while IFS= read -r item; do
-
             # Extract name and date from each item
             title=$(echo "$item" | jq -r '.title')
             status=$(echo "$item" | jq -r '.status')
