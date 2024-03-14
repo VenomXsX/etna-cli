@@ -13,8 +13,3 @@ printf "Giving execute permission\n"
 }
 
 printf "\nAdding to PATH..."
-# {
-#     echo 'export TEST_PATH="$HOME/Projects/etna-cli"' >> ~/.bashrc && printf "Done\n"
-# } || {
-#     printf "\nThere was an error while adding to PATH"
-# }
