@@ -22,7 +22,6 @@ function marks {
             student_mark=$(echo $item | jq -r ".student_mark")
 
             # to get the average mark
-
             if [[ ! $student_mark = "null" ]]; then
                 grades_list+=($student_mark)
                 printf "\033[1m$activ_name\033[0m | \033[0;30m$uv_long_name\033[0m (\033[0;33m$uv_name\033[0m)\n"
