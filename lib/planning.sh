@@ -38,12 +38,16 @@ function planning {
 
             # Iterate over the 'members' array in each item
             printf "Member(s):\n"
-            echo "$item" | jq -c '.group.members[]' | while IFS= read -r member; do
-                member_firstname=$(echo "$member" | jq -r '.firstname')
-                member_lastname=$(echo "$member" | jq -r '.lastname')
-                member_login=$(echo "$member" | jq -r '.login')
-                printf "\033[0;34m$member_firstname $member_lastname\033[0m ($member_login)\n"
-            done
+            if [ "$(echo "$item" | jq -c '.group.members')" = "null" ]; then
+                echo "No member data available"
+            else
+                echo "$item" | jq -c '.group.members[]' | while IFS= read -r member; do
+                    member_firstname=$(echo "$member" | jq -r '.firstname')
+                    member_lastname=$(echo "$member" | jq -r '.lastname')
+                    member_login=$(echo "$member" | jq -r '.login')
+                    printf "\033[0;34m$member_firstname $member_lastname\033[0m ($member_login)\n"
+                done
+            fi
             echo
         done
     else
