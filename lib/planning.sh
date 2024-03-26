@@ -21,8 +21,6 @@ function planning {
 
             type=$(echo "$item" | jq -r '.type')
 
-            #TODO: Working on displaying remaining days
-
             start_sec=$(date -d "$start" +%s)
             today_sec=$(date -d "$today" +%s)
             remaining_days=$((($start_sec - $today_sec) / 86400))
