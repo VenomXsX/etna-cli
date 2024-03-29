@@ -5,6 +5,7 @@ function tickets {
 
     res=$(curl --silent -X GET https://tickets.etna-alternance.net/api/tasks.json -L -b $cookie_path)
 
+
     tickets_array=$(echo $res | jq -r ".data")
     if [[ -n $tickets_array && $(echo "$tickets_array" | jq length) -gt 0 ]]; then
         # Loops over each object in array and call it 'item'
