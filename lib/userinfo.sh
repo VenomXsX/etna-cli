@@ -12,6 +12,7 @@ function userinfo {
     email=$(echo $informations | jq -r ".email")
     login=$(echo $informations | jq -r ".login")
 
+
     echo
     printf "Name       \033[0;34m$firstname $lastname\033[0m\n"
     printf "Login      $login\n"
