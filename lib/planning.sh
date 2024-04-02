@@ -52,4 +52,5 @@ function planning {
         printf "\033[0;33mNothing\033[0m\n"
     fi
     echo
+    
 }
