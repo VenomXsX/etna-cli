@@ -36,3 +36,4 @@ Install those with your package manager
 
 - Visualize activity subject
 - Take 'soutenances' directly from the CLI
+
